@@ -5,3 +5,16 @@ if ('serviceWorker' in window.navigator) {
 
 // Lazy load images
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement
+
+
+
+
+
+
+
+
+// NOTE: TEMPORARY FIX
+// Remove GitHub Pages Added Content
+for (const el of document.body.querySelectorAll('style')) {
+    el.remove();
+}
