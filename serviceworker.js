@@ -1,6 +1,6 @@
 // Grab reference to ServiceWorkerGlobalScope:
 const SWGS = self;
-const CACHE_NAME = 'App Name';
+const CACHE_NAME = 'Todo List';
 
 const APP_SHELL_FILELIST = [];
 const APP_IMAGE_FILELIST = [];
