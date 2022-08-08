@@ -55,12 +55,12 @@ async function cacheData() {
 
 async function fetchData(request) {
     const cache = await SWGS.caches.open(CACHE_NAME);
-    console.log(`[Service Worker] Search cache for request`);
+    console.log(`[Service Worker] Match: ${request}`);
     {
         const response = await cache.match(request);
         if (response) return response;
     }
-    console.log(`[Service Worker] Fetch and cache request`);
+    console.log(`[Service Worker] Fetch: ${request}`);
     {
         const response = await SWGS.fetch(request);
         if (response) {
@@ -78,5 +78,6 @@ async function pruneData() {
             .map(key => {
                 console.log(`[Service Worker] Pruning cache '${key}'`);
                 return SWGS.caches.delete(key);
-            }));
+            })
+    );
 }
