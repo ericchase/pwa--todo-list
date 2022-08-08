@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'"> -->
     <title>App Name</title>
 
     <!-- PWA Manifest -->
@@ -20,7 +20,12 @@
     <meta name="author" content="github.com/ericchase">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./style.css" media="screen">
+    <link rel="preload" href="./style.css" as="style"
+        onload="this.setAttribute('rel', 'stylesheet');this.removeAttribute('onload')">
+    <noscript>
+        <link rel="stylesheet" href="./style.css">
+    </noscript>
+
     <!-- <link rel="stylesheet" href="./print.css" media="print"> -->
     <!-- <style></style> -->
 
