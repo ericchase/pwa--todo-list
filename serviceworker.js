@@ -6,7 +6,7 @@ const APP_SHELL_FILELIST = [];
 const APP_IMAGE_FILELIST = [];
 
 // Import data:
-SWGS.importScripts('???.js');
+// SWGS.importScripts('???.js');
 
 
 // EVENTS
