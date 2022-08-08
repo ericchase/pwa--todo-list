@@ -24,7 +24,7 @@ SWGS.addEventListener('install', function (event) { // ExtendableEvent
 
 // Resource Fetching
 SWGS.addEventListener('fetch', function (event) { // ExtendableEvent
-    console.log(`[Service Worker] Fetch`);
+    console.log(`[Service Worker] Fetch: ${event.request.url}`);
     try {
         event.respondWith(fetchData(event.request));
     } catch (error) {
@@ -55,15 +55,17 @@ async function cacheData() {
 
 async function fetchData(request) {
     const cache = await SWGS.caches.open(CACHE_NAME);
-    console.log(`[Service Worker] Match: ${request}`);
     {
         const response = await cache.match(request);
-        if (response) return response;
+        if (response) {
+            console.log(`[Service Worker] Cache Hit`);
+            return response;
+        }
     }
-    console.log(`[Service Worker] Fetch: ${request}`);
     {
         const response = await SWGS.fetch(request);
         if (response) {
+            console.log(`[Service Worker] Cache Miss`);
             await cache.put(request, response.clone());
             return response;
         }
